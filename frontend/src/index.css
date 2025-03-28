@@ -1,0 +1,176 @@
+/* Importación de tipografía */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Variables de diseño */
+:root {
+  --primary-color: #2E7D32; /* Verde oscuro principal */
+  --primary-dark: #1B5E20; /* Variante más oscura */
+  --secondary-color: #FFC107; /* Amarillo secundario */
+  --accent-color: #F57C00; /* Naranja para detalles */
+  --background-light: #F8F9FA; /* Fondo claro */
+  --text-dark: #2D3436; /* Texto oscuro */
+  --text-light: #FFFFFF; /* Texto claro */
+  --text-secondary: #6C757D; /* Texto secundario para jerarquía */
+  --success-color: #28A745; /* Verde para éxito */
+  --warning-color: #FFC107; /* Amarillo para advertencias */
+  --error-color: #DC3545; /* Rojo para errores */
+  --border-radius: 8px; /* Bordes redondeados */
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  --transition-base: all 0.25s ease; /* Transición base */
+  --hover-opacity: 0.9; /* Opacidad en hover */
+}
+
+/* Estilos generales del body */
+body {
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Navbar */
+.custom-navbar {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  box-shadow: var(--box-shadow);
+  padding: 1rem 1.5rem;
+}
+
+/* Enlaces generales */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* Efecto de subrayado animado SOLO para enlaces del menú de arriba */
+.custom-navbar a {
+  position: relative;
+}
+
+.custom-navbar a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--primary-dark);
+  transition: width 0.3s ease-in-out;
+}
+
+.custom-navbar a:hover::after {
+  width: 100%;
+}
+
+/* Tablas */
+.table-hover tbody tr {
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(46, 125, 50, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Botones */
+.btn {
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: var(--transition-base);
+  padding: 0.5rem 1rem;
+}
+
+.btn-outline-primary {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  opacity: var(--hover-opacity);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  opacity: var(--hover-opacity);
+}
+
+/* Spinner de carga */
+.loading-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 4px solid var(--primary-color);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Tarjetas */
+.card {
+  border: none;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  background-color: var(--background-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* Formularios */
+.form-control {
+  border-radius: var(--border-radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.25);
+}
+
+/* Accesibilidad */
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 992px) {
+  .custom-navbar {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .card {
+    margin: 0.5rem;
+  }
+  
+  .table-hover tbody tr:hover {
+    box-shadow: none;
+  }
+}
